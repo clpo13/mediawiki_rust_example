@@ -1,6 +1,7 @@
 fn main() {
     // select API endpoint
-    let api = mediawiki::api::Api::new("https://en.wikipedia.org/w/api.php").unwrap();
+    // TODO: convert to async
+    let api = mediawiki::api_sync::ApiSync::new("https://en.wikipedia.org/w/api.php").unwrap();
 
     // query parameters
     let params = api.params_into(&[
