@@ -664,6 +664,7 @@ name = "mediawiki_rust_example"
 version = "0.1.0"
 dependencies = [
  "mediawiki",
+ "tokio",
 ]
 
 [[package]]

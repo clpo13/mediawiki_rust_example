@@ -1,7 +1,7 @@
-fn main() {
+#[tokio::main]
+async fn main() {
     // select API endpoint
-    // TODO: convert to async
-    let api = mediawiki::api_sync::ApiSync::new("https://en.wikipedia.org/w/api.php").unwrap();
+    let api = mediawiki::api::Api::new("https://en.wikipedia.org/w/api.php").await.unwrap();
 
     // query parameters
     let params = api.params_into(&[
@@ -12,7 +12,7 @@ fn main() {
     ]);
 
     // run query
-    let res = api.get_query_api_json_all(&params).unwrap();
+    let res = api.get_query_api_json_all(&params).await.unwrap();
 
     // parse result
     let categories: Vec<&str> = res["query"]["pages"]
